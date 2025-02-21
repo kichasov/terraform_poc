@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testapp
+  template:
+    metadata:
+      labels:
+        app: testapp
+    spec:
+      containers:
+      - name: testapp
+        image: public.ecr.aws/viadee/k8s-demo-app:1.2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
